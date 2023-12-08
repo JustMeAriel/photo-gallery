@@ -54,7 +54,15 @@
                             {{ $posts->updated_at }}
                         </p>
                     </div>
-                    <a href="{{ route('posts.index') }}" class="bg-blue-500 text-white px-4 py-2 rounded-md">BACK</a>
+                    <div>
+                    <a href="{{ route('posts.index') }}" class="border border-blue-500 hover:bg-blue-500 hover:text-white px-4 py-2 rounded-md">BACK</a>
+                    <a href="{{ route('posts.edit', $posts->id) }}" class="border border-yellow-500 hover:bg-yellow-500 hover:text-white px-4 py-2 rounded-md">EDIT</a>
+                    <form method="post" action="{{ route('posts.destroy', $posts->id) }}" class="inline">
+                        @csrf
+                        @method('delete')
+                        <button class="border border-red-500 hover:bg-red-500 hover:text-white px-4 py-2 rounded-md">DELETE</button>
+                    </form>
+                    </div>
                 </div>
             </div>
         </div>

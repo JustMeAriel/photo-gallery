@@ -15,11 +15,9 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/dashboard', function () {
+
+Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 

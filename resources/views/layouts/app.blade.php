@@ -12,6 +12,8 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
@@ -25,7 +27,7 @@
                         {{ $header }}
 
                         @if (Session::has('notif.success'))
-                        <div class="bg-blue-300 mt-2 p-4">
+                        <div class="bg-blue-300 mt-2 p-4" id="flash-message">
                             <span class="text-white">{{ Session::get('notif.success')}}</span>
                         </div>
                         @endif
@@ -38,5 +40,12 @@
                 {{ $slot }}
             </main>
         </div>
+        
+        <script>
+            // Auto-dismiss flash messages after 3000 milliseconds (3 seconds)
+            setTimeout(function () {
+                $('#flash-message').fadeOut();
+            }, 3000);
+        </script>
     </body>
 </html>
